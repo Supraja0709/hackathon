@@ -1,0 +1,62 @@
+/* ADD THESE LINES (or replace the existing ones) */
+
+/* Make the whole app take full height */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Full-screen layout */
+.dashboard {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f8fafc;
+}
+
+/* Header stays fixed height */
+header {
+  height: 80px;
+  flex-shrink: 0;
+}
+
+/* Main layout: sidebar + content side by side */
+.main-layout {
+  display: flex;
+  flex: 1;                     /* This makes it fill remaining height */
+  min-height: calc(100vh - 80px);
+}
+
+/* Sidebar stays fixed width */
+.sidebar {
+  width: 280px;
+  background: fixed;
+  
+  top: 80px;
+  left: 0;
+  height: calc(100vh - 80px);
+  background: #1e293b;
+  z-index: 10;
+  overflow-y: auto;
+}
+
+/* RIGHT PANEL — THIS IS THE KEY PART */
+.content {
+  flex: 1;                     /* Takes ALL remaining width */
+  margin-left: 25px;          /* Push it next to sidebar */
+  padding: 40px;
+  width: calc(100vw - 280px);  /* Full width minus sidebar */
+  min-height: calc(100vh - 80px);
+  background: #f8fafc;
+  overflow-y: auto;
+}
+
+/* Optional: Make cards look better in full width */
+.cards-grid {
+    
+   
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
